@@ -131,7 +131,7 @@ def generate_front_page():
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Diary &amp; Thinking Notes</title>
+  <title>LaTeX Blog Template</title>
   <meta name="description" content="A LaTeX blog template with GitHub Actions compilation and a blog-style landing page.">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -139,7 +139,7 @@ def generate_front_page():
   <div class="wrapper">
     <header class="hero">
       <p class="eyebrow">Your Name</p>
-      <h1>Diary &amp; Thinking Notes</h1>
+      <h1>LaTeX Blog Template</h1>
       <p class="hero-copy">A blog-style LaTeX template that compiles posts with GitHub Actions.</p>
     </header>
 
@@ -189,7 +189,7 @@ def generate_feed(out_path: str = os.path.join(DIST_DIR, "feed.xml")) -> None:
     items = [it for it in load_yaml() if it.get("publish", True)]
     items.sort(key=lambda x: x.get("date", ""), reverse=True)
     channel_title = "LaTeX Blog Template"
-    channel_link = "https://example.github.io/latex-blog-template/"
+    channel_link = "https://latex-blog-template.stonezhang.com/"
     channel_desc = "A blog-style LaTeX template with automated GitHub Actions compilation."
     last_build = datetime.now(timezone.utc).strftime("%a, %d %b %Y %H:%M:%S %z")
     lines = [

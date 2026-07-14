@@ -18,6 +18,9 @@ permissions:
   pages: write
   id-token: write
 
+env:
+  CF_TOKEN_SET: ${{ secrets.CLOUDFLARE_API_TOKEN != '' }}
+
 concurrency:
   group: pages
   cancel-in-progress: true
@@ -71,6 +74,15 @@ jobs:
           done
           python build_blog.py from_tex "${files[@]}"
           cp style.css dist/style.css
+
+      # Deploys to Cloudflare Pages when the secrets are configured; skipped in forks.
+      - name: Deploy to Cloudflare Pages
+        if: ${{ env.CF_TOKEN_SET == 'true' }}
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=latex-blog-template --branch=main
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
