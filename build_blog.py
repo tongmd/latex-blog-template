@@ -9,9 +9,16 @@ OUTPUT_POSTS_DIR = os.path.join(DIST_DIR, "posts")
 BLOG_YAML = "blog.yaml"
 
 
+FAVICON_FILES = ["favicon.svg", "favicon-96x96.png", "favicon.ico", "apple-touch-icon.png"]
+
+
 def ensure_dirs():
     os.makedirs(POSTS_DIR, exist_ok=True)
     os.makedirs(OUTPUT_POSTS_DIR, exist_ok=True)
+    import shutil
+    for icon in FAVICON_FILES:
+        if os.path.exists(icon):
+            shutil.copy2(icon, os.path.join(DIST_DIR, icon))
 
 
 def extract_title(tex_path: str) -> str:
@@ -44,6 +51,10 @@ def generate_viewer(post_id: str, title: str) -> None:
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{title}</title>
+  <link rel="icon" type="image/png" href="../favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <link rel="shortcut icon" href="../favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png" />
   <style>
     body {{ margin: 0; background: #f7f3ed; }}
     #pdf-viewer {{ width: 100vw; height: 100vh; overflow: auto; }}
@@ -133,6 +144,10 @@ def generate_front_page():
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>LaTeX Blog Template</title>
   <meta name="description" content="A LaTeX blog template with GitHub Actions compilation and a blog-style landing page.">
+  <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
