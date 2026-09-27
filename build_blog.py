@@ -51,8 +51,8 @@ def generate_viewer(post_id: str, title: str) -> None:
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{title}</title>
-  <link rel="icon" type="image/png" href="../favicon-96x96.png" sizes="96x96" />
-  <link rel="shortcut icon" href="../favicon.ico" />
+  <link rel="icon" type="image/png" href="../favicon-96x96.png?v=brain-e320cbfd" sizes="96x96" />
+  <link rel="shortcut icon" href="../favicon.ico?v=brain-e320cbfd" />
   <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png" />
   <style>
     body {{ margin: 0; background: #f7f3ed; }}
@@ -143,8 +143,8 @@ def generate_front_page():
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>LaTeX Blog Template</title>
   <meta name="description" content="A LaTeX blog template with GitHub Actions compilation and a blog-style landing page.">
-  <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
-  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="icon" type="image/png" href="favicon-96x96.png?v=brain-e320cbfd" sizes="96x96">
+  <link rel="shortcut icon" href="favicon.ico?v=brain-e320cbfd">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <link rel="stylesheet" href="style.css">
 </head>
